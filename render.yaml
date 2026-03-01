@@ -1,0 +1,32 @@
+services:
+  # 1. Backend (Node.js/Express)
+  - type: web
+    name: supplysenseai-backend
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false # Set this in Render Dashboard
+      - key: JWT_SECRET
+        sync: false # Set this in Render Dashboard
+      - key: ML_SERVICE_URL
+        value: "https://supplysenseai-ml.onrender.com"
+      - key: FRONTEND_URL
+        sync: false # Set this to your Vercel URL in Render Dashboard
+      - key: NODE_ENV
+        value: production
+
+  # 2. ML Service (Python/Flask) - optional
+  - type: web
+    name: supplysenseai-ml
+    env: python
+    plan: free
+    buildCommand: cd ml_service && pip install -r requirements.txt
+    startCommand: cd ml_service && gunicorn app:app -b 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0

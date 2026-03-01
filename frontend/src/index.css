@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Sidebar styles */
+.sidebar {
+  transition: width 0.3s ease;
+}
+
+.sidebar-closed {
+  width: 5rem;
+}
+
+.sidebar-open {
+  width: 16rem;
+}
+
+.sidebar .nav-link span {
+  display: none;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar-open .nav-link span {
+  display: inline;
+  opacity: 1;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-left-color: #5eead4;
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Fade-in animation */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Status badges */
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-in-stock,
+.status-completed {
+  background-color: #ccfbf1;
+  color: #0d9488;
+}
+
+.status-low-stock,
+.status-in-progress {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.status-out-of-stock,
+.status-failed {
+  background-color: #ffe4e6;
+  color: #be123c;
+}
+
+/* Homepage styles */
+.hero-bg {
+  background-color: #f8fafc;
+  background-image: radial-gradient(#dbeafe 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 48px;
+  bottom: 0;
+  width: 2px;
+  background-color: #e2e8f0;
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.bg-grid-slate-800 {
+  background-image: linear-gradient(white 1px, transparent 1px),
+    linear-gradient(to right, white 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.05;
+}
+
+/* Dark mode styles */
+.dark body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+.dark .bg-white {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.dark .border-slate-200 {
+  border-color: #334155;
+}
+
+.dark .text-slate-800 {
+  color: #e2e8f0;
+}
+
+.dark .text-slate-600 {
+  color: #94a3b8;
+}
+
+.dark .text-slate-500 {
+  color: #64748b;
+}
+
+.dark .text-slate-700 {
+  color: #cbd5e1;
+}
+
+.dark .bg-slate-50 {
+  background-color: #1e293b;
+}
+
+.dark .bg-slate-100 {
+  background-color: #334155;
+}
+
+.dark .bg-slate-200 {
+  background-color: #475569;
+}
+
+.dark .text-slate-900 {
+  color: #f1f5f9;
+}
+
+.dark .border-slate-300 {
+  border-color: #475569;
+}
+
+.dark .bg-slate-800 {
+  background-color: #0f172a;
+}
+
+/* Dark mode status badges */
+.dark .status-in-stock,
+.dark .status-completed {
+  background-color: rgba(12, 148, 136, 0.1);
+  color: #4dd0e1;
+}
+
+.dark .status-low-stock,
+.dark .status-in-progress {
+  background-color: rgba(180, 83, 9, 0.1);
+  color: #fbbf24;
+}
+
+.dark .status-out-of-stock,
+.dark .status-failed {
+  background-color: rgba(190, 18, 60, 0.1);
+  color: #f87171;
+}
